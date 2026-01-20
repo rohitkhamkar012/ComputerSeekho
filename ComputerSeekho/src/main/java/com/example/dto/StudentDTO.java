@@ -1,58 +1,19 @@
-package com.example.entity;
+package com.example.dto;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(
-    name = "student_master",
-    uniqueConstraints = {
-        @UniqueConstraint(columnNames = "student_username")
-    }
-)
-public class StudentMaster {
+public class StudentDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
     private Integer studentId;
-
-    @Column(name = "student_name", length = 30, nullable = false)
     private String studentName;
-
-    @Column(name = "student_address", length = 60)
     private String studentAddress;
-
-    @Column(name = "student_gender", length = 10)
     private String studentGender;
-
-    @Column(name = "photo_url")
-    private String photoUrl;
-
-    @Column(name = "student_dob")
     private LocalDate studentDob;
-
-    @Column(name = "student_qualification", length = 20)
     private String studentQualification;
-
-    @Column(name = "student_mobile")
     private Long studentMobile;
-
-    @Column(name = "course_fee")
     private Integer courseFee;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private CourseMaster course;
-
-    @ManyToOne
-    @JoinColumn(name = "batch_id")
-    private BatchMaster batch;
-
-    @Column(name = "student_password", length = 15)
-    private String studentPassword;
-
-    @Column(name = "student_username", length = 15, unique = true)
+    private Integer courseId;
+    private Integer batchId;
     private String studentUsername;
 
     // ===== Getters & Setters =====
@@ -64,8 +25,6 @@ public class StudentMaster {
     public void setStudentAddress(String studentAddress) { this.studentAddress = studentAddress; }
     public String getStudentGender() { return studentGender; }
     public void setStudentGender(String studentGender) { this.studentGender = studentGender; }
-    public String getPhotoUrl() { return photoUrl; }
-    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
     public LocalDate getStudentDob() { return studentDob; }
     public void setStudentDob(LocalDate studentDob) { this.studentDob = studentDob; }
     public String getStudentQualification() { return studentQualification; }
@@ -74,12 +33,10 @@ public class StudentMaster {
     public void setStudentMobile(Long studentMobile) { this.studentMobile = studentMobile; }
     public Integer getCourseFee() { return courseFee; }
     public void setCourseFee(Integer courseFee) { this.courseFee = courseFee; }
-    public CourseMaster getCourse() { return course; }
-    public void setCourse(CourseMaster course) { this.course = course; }
-    public BatchMaster getBatch() { return batch; }
-    public void setBatch(BatchMaster batch) { this.batch = batch; }
-    public String getStudentPassword() { return studentPassword; }
-    public void setStudentPassword(String studentPassword) { this.studentPassword = studentPassword; }
+    public Integer getCourseId() { return courseId; }
+    public void setCourseId(Integer courseId) { this.courseId = courseId; }
+    public Integer getBatchId() { return batchId; }
+    public void setBatchId(Integer batchId) { this.batchId = batchId; }
     public String getStudentUsername() { return studentUsername; }
     public void setStudentUsername(String studentUsername) { this.studentUsername = studentUsername; }
 }
